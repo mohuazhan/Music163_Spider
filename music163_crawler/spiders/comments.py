@@ -21,11 +21,17 @@ class CommentsSpider(Spider):
         comments = json.loads(response.body)
         for item in comments['hotComments']:
             hotComments_item = CommentsCrawlerItem()
+            songId = response.url.replace(
+                'http://music.163.com/api/v1/resource/comments/R_SO_4_',
+                ''
+            )
+            hotComments_item['songId'] = songId
             hotComments_item['commentId'] = item['commentId']
             hotComments_item['content'] = item['content']
             hotComments_item['likedCount'] = item['likedCount']
             hotComments_item['time'] = item['time']
             hotComments_item['nickname'] = item['user']['nickname']
             hotComments_item['userId'] = item['user']['userId']
+            hotComments_item['avatarUrl'] = item['user']['avatarUrl']
 
             yield hotComments_item

@@ -14,9 +14,11 @@ class ToplistCrawlerItem(Item):
 
 
 class CommentsCrawlerItem(Item):
+    songId = Field()  # 歌曲id
     commentId = Field()  # 评论id
     content = Field()  # 评论内容
     likedCount = Field()  # 评论获赞数
     time = Field()  # 评论时间
     nickname = Field()  # 评论者
     userId = Field()  # 评论者id
+    avatarUrl = Field()  # 评论者头像

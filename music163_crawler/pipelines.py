@@ -90,5 +90,10 @@ class MongoDBPipeline(object):  # 数据导出到MongoDB
 
     @check_spider_pipeline
     def process_item(self, item, spider):
-        self.collection.insert(dict(item))
+        self.collection.update(
+            {'commentId':item['commentId']},
+            {'$set': dict(item)},
+            upsert=True
+        )  # upsert=True,则commentId已存在时修改，不存在时插入
+
         return item

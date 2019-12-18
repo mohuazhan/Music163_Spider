@@ -1,11 +1,8 @@
 scrapy
 scrapyd
-git+ssh://git@github.com/scrapy/scrapyd-client.git
+scrapyd-client
 pymongo
 redis
-MySQL-python
-treq
-tornado
 requests
 lxml
 supervisor
